@@ -39,6 +39,6 @@ class ClientController extends Controller
     }
 
     public function ShowDetailsClient(Request $request){
-        return view('Client.LectureMore.lectureMore');
+        return view('Client.lectureMore.lectureMore');
     }
 }
