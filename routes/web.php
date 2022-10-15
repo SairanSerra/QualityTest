@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClientController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('client');
+
 });
+
+Route::get('/client', [ClientController::class, 'ShowClient'])->name('client');
+Route::get('/details', [ClientController::class, 'ShowDetailsClient'])->name('details');
