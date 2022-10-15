@@ -15,7 +15,7 @@
             </div>
           </nav>
         @yield('content')
-            <footer class="text-center position-relative top-100">
+            <footer class="text-center position-absolute top-100 start-50">
             <p class="">Sairan Serra &copy; 2022</p>
             </footer>
 
