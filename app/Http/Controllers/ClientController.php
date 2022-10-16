@@ -38,6 +38,12 @@ class ClientController extends Controller
 
     }
 
+    public function showFormCreateClient(){
+
+        return view('Client.createClient.createClient');
+
+    }
+
     public function ShowDetailsClient(Request $request){
         return view('Client.lectureMore.lectureMore');
     }

@@ -12,6 +12,7 @@ class CadastroClientes extends Model
 
     protected $fillabel = [
         'idUsuario',
+        'ID',
         'DataHoraCadastro',
         'Codigo',
         'Nome',

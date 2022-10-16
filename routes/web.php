@@ -21,3 +21,4 @@ Route::get('/', function () {
 
 Route::get('/client', [ClientController::class, 'ShowClient'])->name('client');
 Route::get('/details', [ClientController::class, 'ShowDetailsClient'])->name('details');
+Route::get('/create/client', [ClientController::class, 'showFormCreateClient'])->name('show.form.client');
