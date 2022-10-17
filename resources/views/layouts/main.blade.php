@@ -13,11 +13,6 @@
           @yield('content')
         </main>
 
-            <footer class="text-center  position-absolute top-100 start-50">
-            <p class="">Sairan Serra &copy; 2022</p>
-            </footer>
-
-
     </body>
 
 

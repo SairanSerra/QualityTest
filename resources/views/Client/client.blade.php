@@ -51,8 +51,7 @@
                     </td>
                 </tr>
             </tbody>
-        </table>
-    </div>
+        </table>       
 
       <div class="modal fade" id="modalOptions" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -73,6 +72,7 @@
           </div>
         </div>
       </div>
+      
 
       <script>
        function deletClient(value){

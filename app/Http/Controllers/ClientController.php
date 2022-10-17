@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ValidateCreateClient;
 use App\Models\CadastroClientes;
 use Illuminate\Http\Request;
 
@@ -55,7 +56,8 @@ class ClientController extends Controller
         return view('Client.lectureMore.lectureMore');
     }
 
-    public function createClient(Request $request){
-        return view('Client.createClient.createClient');
+    public function createClient(ValidateCreateClient $request){
+        $data = $request->validated();
+    //   return redirect()->back();
     }
 }
