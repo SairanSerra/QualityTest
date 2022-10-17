@@ -107,7 +107,7 @@
             <div class="d-flex mt-3 justify-content-center">
                 <div class="form-group col-5 ">
                     <label><strong>Limite Crédito</strong><span class="text-danger"> *</span></label>
-                    <input type="text" name="limitCredit" onkeydown="maskCredit()" placeholder="ex: R$ 2.000,00" id="limitCredit" class="form-control">
+                    <input type="text" name="limitCredit" onkeydown="maskCredit()"  placeholder="ex: R$ 2.000,00" id="limitCredit" class="form-control">
                 </div>
                 <div class="form-group col-5 ms-5">
                     <label><strong>Validade</strong><span class="text-danger"> *</span></label>
@@ -143,7 +143,7 @@
             $('#validate').mask('00/00/0000');
         }
         function maskCredit(){
-            $("#limitCredit").maskMoney({prefix:'R$ ', thousands:'.', decimal:',', affixesStay: true});
+            $("#limitCredit").maskMoney({prefix:'R$ ', thousands:'.', decimal:',', symbolStay: true});
         }
         function maskNumber(){
             $('#number').mask('000000');
