@@ -42,7 +42,7 @@
                 </div>
                 <div class="form-group col-5 ms-5">
                     <label><strong>ID cliente</strong><span class="text-danger"> *</span></label>
-                    <input type="text" name="idcliente"  placeholder="ID" id="idcliente" class="form-control">
+                    <input type="text" name="idclient"  placeholder="ID" id="idclient" class="form-control">
                 </div>
 
             </div>
@@ -51,12 +51,12 @@
 
                 <div class="form-group col-5">
                     <label><strong>CEP</strong><span class="text-danger"> *</span></label>
-                    <input type="text" name="cep" id="cep"  placeholder="ex: 12345-6789" class="form-control">
+                    <input type="text" name="cep" id="cep" onkeyup="maskCep()"  placeholder="ex: 12345-6789" class="form-control">
                 </div>
 
                 <div class="form-group col-5 ms-5">
                     <label><strong>Logradouro</strong><span class="text-danger"> *</span></label>
-                    <input type="text" name="logradouro" id="logradouro"  placeholder="ex: Rua São Paulo"  class="form-control">
+                    <input type="text" name="street" id="street"  placeholder="ex: Rua São Paulo"  class="form-control">
                 </div>
 
 
@@ -66,12 +66,12 @@
 
                 <div class="form-group col-5 ">
                     <label><strong>Bairro</strong><span class="text-danger"> *</span></label>
-                    <input type="text" name="bairro" id="bairro"  placeholder="ex: Morumbi" class="form-control">
+                    <input type="text" name="distric" id="distric"  placeholder="ex: Morumbi" class="form-control">
                 </div>
 
                 <div class="form-group col-5 ms-5">
                     <label><strong>Cidade</strong><span class="text-danger"> *</span></label>
-                    <input type="text" name="cidade" id="cidade"  placeholder="ex: São Paulo" class="form-control">
+                    <input type="text" name="city" id="city"  placeholder="ex: São Paulo" class="form-control">
                 </div>
 
 
@@ -81,7 +81,7 @@
 
                 <div class="form-group col-5 ">
                     <label><strong>Estado</strong><span class="text-danger"> *</span></label>
-                    <input type="text" name="estado" id="estado"  placeholder="ex: SP" class="form-control">
+                    <input type="text" name="state" id="state"  placeholder="ex: SP" class="form-control">
                 </div>
 
 
@@ -93,12 +93,12 @@
             <div class="d-flex mt-3 justify-content-center">
                 <div class="form-group col-5">
                     <label><strong>Complemento</strong></label>
-                    <input type="text" name="complemento" id="complemento"  placeholder="ex: Casa 2" class="form-control">
+                    <input type="text" name="complement" id="complement"  placeholder="ex: Casa 2" class="form-control">
                 </div>
 
                 <div class="form-group col-5 ms-5">
                     <label><strong>Fone</strong><span class="text-danger"> *</span></label>
-                    <input type="text" name="fone" id="fone"  placeholder="ex: (11) 99999-9999" class="form-control">
+                    <input type="text" name="phone" id="phone" onkeyup="maskphone()"  placeholder="ex: (11) 99999-9999" class="form-control">
                 </div>
 
 
@@ -147,6 +147,26 @@
         }
         function maskNumber(){
             $('#number').mask('000000');
+        }
+        function maskphone(){
+            let phone = document.getElementById("phone");
+            let phoneValue = phone.value;
+
+            if(phoneValue.length == 1){
+                phone.value = '('+phone.value;
+            }
+
+            console.log(phoneValue);
+            if(phoneValue.length <= 14){
+                $('#phone').mask('(00) 0000-00000');
+            }
+            if(phoneValue.length > 14){
+                $('#phone').mask('(00) 00000-0000');
+            }
+
+        }
+        function maskCep(){
+            $('#cep').mask('00000-000');
         }
 
 
