@@ -38,13 +38,24 @@ class ClientController extends Controller
 
     }
 
+    public function deletClient(Request $request){
+        $id = $request->id;
+
+        $client = $this->model->where('ID', $id)->first();
+        $client->delete();
+
+        return view('Client.client');
+    }
+
     public function showFormCreateClient(){
-
         return view('Client.createClient.createClient');
-
     }
 
     public function ShowDetailsClient(Request $request){
         return view('Client.lectureMore.lectureMore');
+    }
+
+    public function createClient(Request $request){
+        return view('Client.createClient.createClient');
     }
 }

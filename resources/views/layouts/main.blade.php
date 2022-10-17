@@ -8,12 +8,7 @@
 
     </head>
     <body class="mb-10">
-        <nav class="navbar navbar-dark bg-dark h-3">
-            <div class="ms-4">
-                <a class="text-white fs-4 ms-3 text-decoration-none" href="{{route('client')}}">Clientes</a>
-                <a class="text-white fs-4 ms-3 text-decoration-none" href="{{route('show.form.client')}}">Cadastro</a>
-            </div>
-          </nav>
+        @include('layouts.navbar')
         @yield('content')
             <footer class="text-center  position-relative h-100 ">
             <p class="">Sairan Serra &copy; 2022</p>
@@ -25,6 +20,5 @@
 
 </html>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-<script src=
-"https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+@include('layouts.scripts')
+

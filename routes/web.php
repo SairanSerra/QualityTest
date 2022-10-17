@@ -21,4 +21,7 @@ Route::get('/', function () {
 
 Route::get('/client', [ClientController::class, 'ShowClient'])->name('client');
 Route::get('/details', [ClientController::class, 'ShowDetailsClient'])->name('details');
-Route::get('/create/client', [ClientController::class, 'showFormCreateClient'])->name('show.form.client');
+Route::get('/create/client/form', [ClientController::class, 'showFormCreateClient'])->name('show.form.client');
+Route::post('/delete/client', [ClientController::class, 'deletClient'])->name('delet.client');
+Route::get('/create/client',[ClientController::class, 'createClient'])->name('create.client');
+//createClient

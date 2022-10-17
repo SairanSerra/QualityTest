@@ -54,10 +54,6 @@
         </table>
     </div>
 
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalOptions">
-        Launch static backdrop modal
-      </button>
-      
       <div class="modal fade" id="modalOptions" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -68,10 +64,10 @@
               Deseja realmente excluir este cadastro?
             </div>
             <div class="d-flex justify-content-center mb-5 mt-5">
-              <form action="" method="post">
-                <input type="hidden" id="valueDelete" name="id" value=""/>
+              <form action="{{route('delet.client')}}" method="post">
+                <input type="hidden" id="valueDelete" name="id"/>
               <button type="button" class="btn btn-secondary me-3 btn-success" data-bs-dismiss="modal">Não</button>
-              <button type="submit" class="btn btn-primary btn-danger">Sim</button>
+              <button type="submit" data-bs-toggle="modal" data-bs-target="#modalOptions" class="btn btn-primary btn-danger">Sim</button>
             </form>
             </div>
           </div>
@@ -80,12 +76,11 @@
 
       <script>
        function deletClient(value){
-
         let modal = document.getElementById('modalOptions');
-        let input = document.getElementById("id");
-        input. = value;
-        console.log(input.value);
-        alert(value);
+        let input = document.getElementById("valueDelete");
+        input.value = value;
+        $('#modalOptions').modal('show');
        }
+
       </script>
 @endsection
