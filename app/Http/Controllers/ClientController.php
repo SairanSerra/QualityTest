@@ -61,6 +61,12 @@ class ClientController extends Controller
         return view('Client.lectureMore.lectureMore',['data' => $data]);
     }
 
+    public function ShowEditClient(Request $request){
+        $id = $request->id;
+        $data = $this->model->where('id', $id)->first();
+        return view('Client.editClient.editClient',['data' => $data]);
+    }
+
     public function createClient(ValidateCreateClient $request){
             $data = $request->validated();
 
@@ -70,6 +76,34 @@ class ClientController extends Controller
             $data['limitCredit'] =Utils::retiraFormat('moeda2', $data['limitCredit']);
 
             $this->model->create([
+                'idUsuario' =>  $data['idclient'] ,
+                'DataHoraCadastro' => Carbon::now()->format('Y-m-d H:i:s'),
+                'Codigo' => $data['codigo'],
+                'Nome' => $data['name'] ,
+                'CPF_CNPJ' => $data['document'],
+                'CEP' => $data['cep'],
+                'Endereco'  => $data['street'],
+                'Numero' => $data['number'],
+                'Bairro' => $data['distric'] ,
+                'Cidade' => $data['city'] ,
+                'UF' => $data['state'] ,
+                'Complemento' => $data['complement'] ,
+                'Fone' => $data['phone'],
+                'LimiteCredito' => $data['limitCredit'],
+                'Validade' => $data['validate'],
+            ]);
+
+       return redirect()->route('client',['clientCreate' => true]);
+    }
+    public function SaveEditClient(ValidateCreateClient $request){
+            $data = $request->validated();
+
+            $data['document'] = Utils::retiraFormat('document', $data['document']);
+            $data['cep'] = Utils::retiraFormat('cep', $data['cep']);
+            $data['phone'] = Utils::retiraFormat('phone', $data['phone']);
+            $data['limitCredit'] =Utils::retiraFormat('moeda2', $data['limitCredit']);
+
+            $this->model->update([
                 'idUsuario' =>  $data['idclient'] ,
                 'DataHoraCadastro' => Carbon::now()->format('Y-m-d H:i:s'),
                 'Codigo' => $data['codigo'],

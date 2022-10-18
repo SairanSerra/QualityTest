@@ -13,9 +13,10 @@
     </div>
 
     <div class="p-5">
-        <form action="{{ route('create.client') }}" method="post">
+        <form action="{{ route('save.client') }}" method="post">
             <div class="d-flex justify-content-center">
                 @csrf
+                <input type="hidden" name="id" value="{{$data['id']}}"/>
                 @if ($errors->any())
                     <div id="alert"
                         class="form-group col-5 ms-5 mb-5 w-100 bg-danger rounded d-flex justify-content-between">
@@ -29,13 +30,13 @@
 
                 <div class="form-group col-5">
                     <label><strong>Nome</strong><span class="text-danger"> *</span></label>
-                    <input type="text" name="name" id="name" placeholder="Ex: Maria" value="{{ old('name') }}"
+                    <input type="text" name="name" id="name" placeholder="Ex: Maria" value="{{ $data['Nome']  }}"
                         class="form-control">
                 </div>
 
                 <div class="form-group col-5 ms-5">
                     <label><strong>CPF/CNPJ</strong><span class="text-danger"> *</span></label>
-                    <input type="text" name="document" value="{{ old('document') }}" placeholder="ex: 000.000.000-00"
+                    <input type="text" name="document" value="{{ \App\helpers\Utils::formatar('documento',$data['CPF_CNPJ']) }}" placeholder="ex: 000.000.000-00"
                         onkeyup="maskDocument()" id="document" class="form-control">
                 </div>
             </div>
@@ -44,7 +45,7 @@
 
                 <div class="form-group col-5">
                     <label><strong>Código</strong><span class="text-danger"> *</span></label>
-                    <input type="text" name="codigo" value="{{ old('codigo') }}" id="codigo" placeholder="ex: 123"
+                    <input type="text" name="codigo" value="{{ $data['Codigo'] }}" id="codigo" placeholder="ex: 123"
                         class="form-control">
                 </div>
                 <div class="form-group col-5 ms-5">

@@ -24,4 +24,6 @@ Route::get('/details', [ClientController::class, 'ShowDetailsClient'])->name('de
 Route::get('/create/client/form', [ClientController::class, 'showFormCreateClient'])->name('show.form.client');
 Route::post('/delete/client', [ClientController::class, 'deletClient'])->name('delet.client');
 Route::post('/create/client',[ClientController::class, 'createClient'])->name('create.client');
+Route::get('/edit/client/show',[ClientController::class, 'ShowEditClient'])->name('edit.client.show');
+Route::post('/edit/client',[ClientController::class, 'SaveEditClient'])->name('save.client');
 //createClient

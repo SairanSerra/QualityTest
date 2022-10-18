@@ -76,7 +76,7 @@
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                         <li><a class="dropdown-item" href="{{ route('details', array('id'=>$client->id)) }}">Detalhes</a></li>
-                                        <li><a class="dropdown-item" href="javascript:0">Editar</a></li>
+                                        <li><a class="dropdown-item" href="{{route('edit.client.show',array('id'=>$client->id))}}">Editar</a></li>
                                         <li><a class="dropdown-item" onclick="deletClient({{ $client->id }})"
                                                 href="javascript:0">Excluir</a></li>
                                     </ul>

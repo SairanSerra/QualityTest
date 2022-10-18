@@ -126,7 +126,7 @@
 
         <div class="d-flex justify-content-center mt-5 mb-3">
             <a type="button" href="{{route('client')}}" class="btn btn-dark">Voltar</a>
-            <a type="button" class="btn btn-dark ms-3">Editar</a>
+            <a type="button" href="{{route('edit.client.show',array('id'=>$data->id))}}" class="btn btn-dark ms-3">Editar</a>
         </div>
 
     </div>
