@@ -16,7 +16,7 @@ class NewTableCliente extends Migration
         Schema::create('cadastro_clientes', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('idUsuario');
-            $table->date('DataHoraCadastro')->nullable();
+            $table->dateTime('DataHoraCadastro')->nullable();
             $table->string('Codigo',15)->nullable();
             $table->string('Nome',150)->nullable();
             $table->string('CPF_CNPJ',20)->nullable();

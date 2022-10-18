@@ -7,6 +7,7 @@ use App\Http\Requests\ValidateCreateClient;
 use App\Models\CadastroClientes;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class ClientController extends Controller
 {
@@ -33,6 +34,7 @@ class ClientController extends Controller
                 $query->where('Codigo', 'LIKE', '%'.$codigo.'%');
             }
             if($cep != null){
+                $cep = Utils::retiraFormat('cep',$cep);
                 $query->where('CEP', 'LIKE', '%'.$cep.'%');
             }
         })->orderByDesc('created_at')->paginate(10);
@@ -46,7 +48,7 @@ class ClientController extends Controller
         $client = $this->model->where('id', $id)->first();
         $client->delete();
 
-        return redirect(route('client'))->with('clientCreate',true);
+        return Redirect::route('client')->with('clientCreate',true);
     }
 
     public function showFormCreateClient(){
@@ -54,18 +56,18 @@ class ClientController extends Controller
     }
 
     public function ShowDetailsClient(Request $request){
-        return view('Client.lectureMore.lectureMore');
+        $id = $request->id;
+        $data = $this->model->where('id', $id)->first();
+        return view('Client.lectureMore.lectureMore',['data' => $data]);
     }
 
     public function createClient(ValidateCreateClient $request){
             $data = $request->validated();
 
-            $data['document'] = Utils::retiraFormat('document', $data['document']);      ;
-            $data['cep'] = Utils::retiraFormat('cep', $data['cep']);           ;
+            $data['document'] = Utils::retiraFormat('document', $data['document']);
+            $data['cep'] = Utils::retiraFormat('cep', $data['cep']);
             $data['phone'] = Utils::retiraFormat('phone', $data['phone']);
-            $data['limitCredit'] =Utils::retiraFormat('moeda2', $data['limitCredit']);  ;
-            $data['validate'] = explode('/',$data['validate']);
-            $data['validate'] = "{$data['validate'][2]}-{$data['validate'][1]}-{$data['validate'][0]}";
+            $data['limitCredit'] =Utils::retiraFormat('moeda2', $data['limitCredit']);
 
             $this->model->create([
                 'idUsuario' =>  $data['idclient'] ,
