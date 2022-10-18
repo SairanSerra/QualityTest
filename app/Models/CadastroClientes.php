@@ -10,9 +10,9 @@ class CadastroClientes extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillabel = [
+    protected $fillable = [
         'idUsuario',
-        'ID',
+        'id',
         'DataHoraCadastro',
         'Codigo',
         'Nome',

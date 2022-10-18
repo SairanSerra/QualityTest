@@ -15,7 +15,7 @@
     <div class="p-5">
         <form action="{{ route('create.client') }}" method="post">
             <div class="d-flex justify-content-center">
-
+                @csrf
                 @if ($errors->any())
                     <div id="alert"
                         class="form-group col-5 ms-5 mb-5 w-100 bg-danger rounded d-flex justify-content-between">
@@ -29,13 +29,14 @@
 
                 <div class="form-group col-5">
                     <label><strong>Nome</strong><span class="text-danger"> *</span></label>
-                    <input type="text" name="nome" id="nome" placeholder="Ex: Maria" class="form-control">
+                    <input type="text" name="name" id="name" placeholder="Ex: Maria" value="{{ old('name') }}"
+                        class="form-control">
                 </div>
 
                 <div class="form-group col-5 ms-5">
                     <label><strong>CPF/CNPJ</strong><span class="text-danger"> *</span></label>
-                    <input type="text" name="document" placeholder="ex: 000.000.000-00" onkeyup="maskDocument()"
-                        id="document" class="form-control">
+                    <input type="text" name="document" value="{{ old('document') }}" placeholder="ex: 000.000.000-00"
+                        onkeyup="maskDocument()" id="document" class="form-control">
                 </div>
             </div>
 
@@ -43,11 +44,13 @@
 
                 <div class="form-group col-5">
                     <label><strong>Código</strong><span class="text-danger"> *</span></label>
-                    <input type="text" name="codigo" id="codigo" placeholder="ex: 123" class="form-control">
+                    <input type="text" name="codigo" value="{{ old('codigo') }}" id="codigo" placeholder="ex: 123"
+                        class="form-control">
                 </div>
                 <div class="form-group col-5 ms-5">
                     <label><strong>ID cliente</strong><span class="text-danger"> *</span></label>
-                    <input type="text" name="idclient" placeholder="ID" id="idclient" class="form-control">
+                    <input type="text" name="idclient" value="{{ old('idclient') }}" onkeypress="maskIdClient()"
+                        placeholder="ID" id="idclient" class="form-control">
                 </div>
 
             </div>
@@ -56,14 +59,14 @@
 
                 <div class="form-group col-5">
                     <label><strong>CEP</strong><span class="text-danger"> *</span></label>
-                    <input type="text" name="cep" id="cep" onkeyup="maskCep()" placeholder="ex: 12345-6789"
-                        class="form-control">
+                    <input type="text" name="cep" id="cep" value="{{ old('cep') }}" onkeyup="searchCEP()"
+                        placeholder="ex: 12345-6789" class="form-control">
                 </div>
 
                 <div class="form-group col-5 ms-5">
                     <label><strong>Logradouro</strong><span class="text-danger"> *</span></label>
-                    <input type="text" name="street" id="street" placeholder="ex: Rua São Paulo"
-                        class="form-control">
+                    <input type="text" name="street" id="street" value="{{ old('street') }}"
+                        placeholder="ex: Rua São Paulo" class="form-control">
                 </div>
 
 
@@ -73,12 +76,14 @@
 
                 <div class="form-group col-5 ">
                     <label><strong>Bairro</strong><span class="text-danger"> *</span></label>
-                    <input type="text" name="distric" id="distric" placeholder="ex: Morumbi" class="form-control">
+                    <input type="text" name="distric" id="distric" value="{{ old('distric') }}"
+                        placeholder="ex: Morumbi" class="form-control">
                 </div>
 
                 <div class="form-group col-5 ms-5">
                     <label><strong>Cidade</strong><span class="text-danger"> *</span></label>
-                    <input type="text" name="city" id="city" placeholder="ex: São Paulo" class="form-control">
+                    <input type="text" name="city" id="city" value="{{ old('city') }}"
+                        placeholder="ex: São Paulo" class="form-control">
                 </div>
 
 
@@ -88,26 +93,28 @@
 
                 <div class="form-group col-5 ">
                     <label><strong>Estado</strong><span class="text-danger"> *</span></label>
-                    <input type="text" name="state" id="state" placeholder="ex: SP" class="form-control">
+                    <input type="text" name="state" id="state" value="{{ old('state') }}" maxlength="2"
+                        placeholder="ex: SP" class="form-control">
                 </div>
 
 
                 <div class="form-group col-5 ms-5">
                     <label><strong>Número</strong><span class="text-danger"> *</span></label>
-                    <input type="text" name="number" id="number" onkeyup="maskNumber()" placeholder="ex: 23"
-                        class="form-control">
+                    <input type="text" name="number" id="number" value="{{ old('number') }}" onkeyup="maskNumber()"
+                        placeholder="ex: 23" class="form-control">
                 </div>
             </div>
             <div class="d-flex mt-3 justify-content-center">
                 <div class="form-group col-5">
                     <label><strong>Complemento</strong></label>
-                    <input type="text" name="complement" id="complement" placeholder="ex: Casa 2" class="form-control">
+                    <input type="text" name="complement" id="complement" value="{{ old('complement') }}"
+                        placeholder="ex: Casa 2" class="form-control">
                 </div>
 
                 <div class="form-group col-5 ms-5">
                     <label><strong>Fone</strong><span class="text-danger"> *</span></label>
-                    <input type="text" name="phone" id="phone" onkeyup="maskphone()"
-                        placeholder="ex: (11) 99999-9999" class="form-control">
+                    <input type="text" name="phone" id="phone" value="{{ old('phone') }}"
+                        onkeyup="maskphone()" placeholder="ex: (11) 99999-9999" class="form-control">
                 </div>
 
 
@@ -116,14 +123,14 @@
             <div class="d-flex mt-3 justify-content-center">
                 <div class="form-group col-5 ">
                     <label><strong>Limite Crédito</strong><span class="text-danger"> *</span></label>
-                    <input type="text" name="limitCredit" onkeydown="maskCredit()" placeholder="ex: R$ 2.000,00"
-                        id="limitCredit" class="form-control">
+                    <input type="text" name="limitCredit" value="{{ old('limitCredit') }}" onkeydown="maskCredit()"
+                        placeholder="ex: R$ 2.000,00" id="limitCredit" class="form-control">
                 </div>
                 <div class="form-group col-5 ms-5">
                     <label><strong>Validade</strong><span class="text-danger"> *</span></label>
-                    <input type="text" name="validate" maxlength="10" onkeyup="maskDate()"
-                        placeholder="ex: {{ \Carbon\Carbon::now()->format('d/m/Y') }}" id="validate"
-                        class="form-control">
+                    <input type="text" name="validate" value="{{ old('validate') }}" maxlength="10"
+                        onkeyup="maskDate()" placeholder="ex: {{ \Carbon\Carbon::now()->format('d/m/Y') }}"
+                        id="validate" class="form-control">
 
                 </div>
 
@@ -184,8 +191,56 @@
 
         }
 
-        function maskCep() {
+        function maskIdClient() {
+            $('#idclient').mask('00000000000000000');
+        }
+
+        function searchCEP() {
             $('#cep').mask('00000-000');
+            let cep = document.getElementById("cep");
+            cepConsult = cep.value.replace('-', '');
+            if (cepConsult.length == 8) {
+                $.ajax({
+                    type: "GET",
+                    url: "https://viacep.com.br/ws/" + cepConsult + "/json/",
+                    dataType: "JSON",
+                    processData: false,
+                    contentType: false,
+                    cache: false,
+                    success: (response) => {
+                        document.getElementById("distric").readOnly = response.bairro != '' ? true : false;
+                        document.getElementById("city").readOnly = response.localidade != '' ? true : false;
+                        document.getElementById("street").readOnly = response.logradouro != '' ? true : false;
+                        document.getElementById("state").readOnly = response.uf != '' ? true : false;
+
+                        if (response.bairro != '') {
+                            let distric = document.getElementById("distric");
+                            distric.value = response.bairro;
+
+                        }
+                        if (response.localidade != '') {
+                            let city = document.getElementById("city");
+                            city.value = response.localidade;
+                        }
+                        if (response.logradouro != '') {
+                            let street = document.getElementById("street");
+                            street.value = response.logradouro;
+                        }
+                        if (response.uf != '') {
+                            let state = document.getElementById("state");
+                            state.value = response.uf;
+                        }
+                    },
+                    error: (response) => {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Falha ao Consultar CEP',
+                            showConfirmButton: false,
+                            timer: 2500,
+                        })
+                    }
+                })
+            }
         }
 
         function hideAlert() {
