@@ -23,7 +23,7 @@
 
             <div class="form-group col-5 ms-5">
                 <label><strong>CPF/CNPJ</strong><span class="text-danger"> *</span></label>
-                <input readOnly type="text" name="document" value="{{ $data['CPF_CNPJ'] }}" placeholder="ex: 000.000.000-00"
+                <input readOnly type="text" name="document" value="{{ \App\helpers\Utils::formatar('documento',$data['CPF_CNPJ']) }}" placeholder="ex: 000.000.000-00"
                      id="document" class="form-control">
             </div>
         </div>
@@ -111,7 +111,7 @@
         <div class="d-flex mt-3 justify-content-center">
             <div class="form-group col-5 ">
                 <label><strong>Limite Crédito</strong><span class="text-danger"> *</span></label>
-                <input readOnly type="text" name="limitCredit" value="{{ $data['LimiteCredito'] }}"
+                <input readOnly type="text" name="limitCredit" value="{{"R$ " . number_format($data['LimiteCredito'],2,",",".")}}"
                     placeholder="ex: R$ 2.000,00" id="limitCredit" class="form-control">
             </div>
             <div class="form-group col-5 ms-5">
