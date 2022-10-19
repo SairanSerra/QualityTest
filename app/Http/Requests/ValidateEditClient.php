@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ValidateCreateClient extends FormRequest
+class ValidateEditClient extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -38,6 +38,7 @@ class ValidateCreateClient extends FormRequest
             'phone'         => ['required'],
             'limitCredit'   => ['required'],
             'validate'      => ['required'],
+            'id'            => ['required']
         ];
     }
 }

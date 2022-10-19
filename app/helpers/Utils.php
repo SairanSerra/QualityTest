@@ -83,13 +83,22 @@ class Utils
 
         switch ($tipo) {
             case 'fone':
-                if ($size === 10) {
-                    $string = '(' . substr($tipo, 0, 2) . ') ' . substr($tipo, 2, 4)
-                        . '-' . substr($tipo, 6);
-                } elseif ($size === 11) {
-                    $string = '(' . substr($tipo, 0, 2) . ') ' . substr($tipo, 2, 5)
-                        . '-' . substr($tipo, 7);
-                }
+                $tam = strlen(preg_replace("/[^0-9]/", "", $string));
+                if ($tam == 13) { // COM CÓDIGO DE ÁREA NACIONAL E DO PAIS e 9 dígitos
+                    return "+".substr($string,0,$tam-11)."(".substr($string,$tam-11,2).") ".substr($string,$tam-9,5)."-".substr($string,-4);
+                    }
+                    if ($tam == 12) { // COM CÓDIGO DE ÁREA NACIONAL E DO PAIS
+                    return "+".substr($string,0,$tam-10)."(".substr($string,$tam-10,2).") ".substr($string,$tam-8,4)."-".substr($string,-4);
+                    }
+                    if ($tam == 11) { // COM CÓDIGO DE ÁREA NACIONAL e 9 dígitos
+                    return "(".substr($string,0,2).") ".substr($string,2,5)."-".substr($string,7,11);
+                    }
+                    if ($tam == 10) { // COM CÓDIGO DE ÁREA NACIONAL
+                    return "(".substr($string,0,2).") ".substr($string,2,4)."-".substr($string,6,10);
+                    }
+                    if ($tam <= 9) { // SEM CÓDIGO DE ÁREA
+                    return substr($string,0,$tam-4)."-".substr($string,-4);
+                    }
                 break;
             case 'cep':
                 $string = substr($string, 0, 5) . '-' . substr($string, 5, 3);
@@ -116,6 +125,9 @@ class Utils
             case 'rg':
                 $string = substr($string, 0, 2) . '.' . substr($string, 2, 3) .
                     '.' . substr($string, 5, 3);
+                break;
+            case 'money':
+                $string = 'R$ '.number_format($string,2,',','.');
                 break;
             default:
                 $string = 'É necessário definir um tipo(fone, cep, cpg, cnpj, rg)';

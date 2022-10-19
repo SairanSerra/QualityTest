@@ -17,23 +17,23 @@
             @csrf
             <div class="form-group col-2">
                 <label><strong>Código</strong></label>
-                <input type="text" name="codigo" id="codigo" placeholder="Ex: 123" value="{{ old('codigo') }}"
+                <input type="text" name="codigo" id="codigo" placeholder="Ex: 123" value="{{ isset($codigo) ? $codigo : '' }}"
                     class="form-control">
             </div>
 
             <div class="form-group col-3 ms-2">
                 <label><strong>Nome</strong></label>
-                <input type="text" name="name" value="{{ old('name') }}" placeholder="ex: Maria"id="name"
+                <input type="text" name="name" value="{{ isset($name) ? $name : ''  }}" placeholder="ex: Maria"id="name"
                     class="form-control">
             </div>
             <div class="form-group col-3 ms-2">
                 <label><strong>Cidade</strong></label>
-                <input type="text" name="city" value="{{ old('city') }}" placeholder="ex: São Paulo"id="city"
+                <input type="text" name="city" value="{{ isset($city) ? $city : '' }}" placeholder="ex: São Paulo"id="city"
                     class="form-control">
             </div>
             <div class="form-group col-3 ms-2">
                 <label><strong>CEP</strong></label>
-                <input type="text" name="cep" value="{{ old('cep') }}" onkeyup="maskCEP()"
+                <input type="text" name="cep" value="{{ isset($cep) ? $cep : '' }}" onkeyup="maskCEP()"
                     placeholder="ex: 00000-000"id="cep" class="form-control">
             </div>
         </div>

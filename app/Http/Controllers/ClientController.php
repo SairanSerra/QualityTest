@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\helpers\Utils;
 use App\Http\Requests\ValidateCreateClient;
+use App\Http\Requests\ValidateEditClient;
 use App\Models\CadastroClientes;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -39,7 +40,7 @@ class ClientController extends Controller
             }
         })->orderByDesc('created_at')->paginate(10);
 
-        return view('Client.client',['listClient' => $client]);
+        return view('Client.client',['listClient' => $client])->with($request->except('_token'));
 
     }
 
@@ -93,9 +94,9 @@ class ClientController extends Controller
                 'Validade' => $data['validate'],
             ]);
 
-       return redirect()->route('client',['clientCreate' => true]);
+       return redirect()->route('client');
     }
-    public function SaveEditClient(ValidateCreateClient $request){
+    public function SaveEditClient(ValidateEditClient $request){
             $data = $request->validated();
 
             $data['document'] = Utils::retiraFormat('document', $data['document']);
@@ -103,9 +104,10 @@ class ClientController extends Controller
             $data['phone'] = Utils::retiraFormat('phone', $data['phone']);
             $data['limitCredit'] =Utils::retiraFormat('moeda2', $data['limitCredit']);
 
-            $this->model->update([
+            $client = $this->model->where('id',$data['id'])->first();
+
+            $client->update([
                 'idUsuario' =>  $data['idclient'] ,
-                'DataHoraCadastro' => Carbon::now()->format('Y-m-d H:i:s'),
                 'Codigo' => $data['codigo'],
                 'Nome' => $data['name'] ,
                 'CPF_CNPJ' => $data['document'],
@@ -121,6 +123,6 @@ class ClientController extends Controller
                 'Validade' => $data['validate'],
             ]);
 
-       return redirect()->route('client',['clientCreate' => true]);
+       return redirect()->route('client');
     }
 }

@@ -139,11 +139,20 @@
 
             <div class="d-flex justify-content-center mt-5 mb-3">
                 <a type="button" href="{{ route('client') }}" id="buttonSubmit" class="btn btn-dark">Cancelar</a>
-                <button type="submit" onclick="disbleButton()" class="btn btn-dark ms-3">Cadastrar</button>
+                <button type="submit" id="btnSubmit" class="btn btn-dark ms-3">Cadastrar</button>
             </div>
         </form>
     </div>
     <script>
+
+            let button = document.getElementById('btnSubmit');
+
+            button.addEventListener('click', ()=>{
+                button.classList.add('disabled');
+                setTimeout(() => {
+                    button.classList.remove('disabled');
+                }, 2000);
+            });
 
         function maskDocument() {
 
@@ -238,9 +247,6 @@
                     }
                 })
             }
-        }
-        function disbleButton(){
-            document.getElementById('buttonSubmit').disabled = true;
         }
 
         function hideAlert() {

@@ -30,13 +30,13 @@
 
                 <div class="form-group col-5">
                     <label><strong>Nome</strong><span class="text-danger"> *</span></label>
-                    <input type="text" name="name" id="name" placeholder="Ex: Maria" value="{{ $data['Nome']  }}"
+                    <input type="text" name="name" id="name" placeholder="Ex: Maria" value="{{ old('name') ?? $data['Nome']  }}"
                         class="form-control">
                 </div>
 
                 <div class="form-group col-5 ms-5">
                     <label><strong>CPF/CNPJ</strong><span class="text-danger"> *</span></label>
-                    <input type="text" name="document" value="{{ \App\helpers\Utils::formatar('documento',$data['CPF_CNPJ']) }}" placeholder="ex: 000.000.000-00"
+                    <input type="text" name="document" value="{{ old('document') ?? \App\helpers\Utils::formatar('documento',$data['CPF_CNPJ']) }}" placeholder="ex: 000.000.000-00"
                         onkeyup="maskDocument()" id="document" class="form-control">
                 </div>
             </div>
@@ -45,12 +45,12 @@
 
                 <div class="form-group col-5">
                     <label><strong>Código</strong><span class="text-danger"> *</span></label>
-                    <input type="text" name="codigo" value="{{ $data['Codigo'] }}" id="codigo" placeholder="ex: 123"
+                    <input type="text" name="codigo" value="{{ old('codigo') ?? $data['Codigo'] }}" id="codigo" placeholder="ex: 123"
                         class="form-control">
                 </div>
                 <div class="form-group col-5 ms-5">
                     <label><strong>ID cliente</strong><span class="text-danger"> *</span></label>
-                    <input type="text" name="idclient" value="{{ old('idclient') }}" onkeypress="maskIdClient()"
+                    <input type="text" name="idclient" value="{{ old('idclient') ?? $data['idUsuario'] }}" onclick="maskIdClient()" onkeypress="maskIdClient()"
                         placeholder="ID" id="idclient" class="form-control">
                 </div>
 
@@ -60,13 +60,13 @@
 
                 <div class="form-group col-5">
                     <label><strong>CEP</strong><span class="text-danger"> *</span></label>
-                    <input type="text" name="cep" id="cep" value="{{ old('cep') }}" onkeyup="searchCEP()"
+                    <input type="text" name="cep" id="cep" value="{{ old('cep') ?? App\helpers\Utils::formatar('cep',$data['CEP']) }}" onkeyup="searchCEP()"
                         placeholder="ex: 12345-6789" class="form-control">
                 </div>
 
                 <div class="form-group col-5 ms-5">
                     <label><strong>Logradouro</strong><span class="text-danger"> *</span></label>
-                    <input type="text" name="street" id="street" value="{{ old('street') }}"
+                    <input type="text" name="street" id="street" value="{{ old('street') ?? $data['Endereco'] }}"
                         placeholder="ex: Rua São Paulo" class="form-control">
                 </div>
 
@@ -77,13 +77,13 @@
 
                 <div class="form-group col-5 ">
                     <label><strong>Bairro</strong><span class="text-danger"> *</span></label>
-                    <input type="text" name="distric" id="distric" value="{{ old('distric') }}"
+                    <input type="text" name="distric" id="distric" value="{{ old('distric') ?? $data['Bairro'] }}"
                         placeholder="ex: Morumbi" class="form-control">
                 </div>
 
                 <div class="form-group col-5 ms-5">
                     <label><strong>Cidade</strong><span class="text-danger"> *</span></label>
-                    <input type="text" name="city" id="city" value="{{ old('city') }}"
+                    <input type="text" name="city" id="city" value="{{ old('city') ?? $data['Cidade'] }}"
                         placeholder="ex: São Paulo" class="form-control">
                 </div>
 
@@ -94,28 +94,28 @@
 
                 <div class="form-group col-5 ">
                     <label><strong>Estado</strong><span class="text-danger"> *</span></label>
-                    <input type="text" name="state" id="state" value="{{ old('state') }}" maxlength="2"
+                    <input type="text" name="state" id="state" value="{{ old('state') ?? $data['UF'] }}" maxlength="2"
                         placeholder="ex: SP" class="form-control">
                 </div>
 
 
                 <div class="form-group col-5 ms-5">
                     <label><strong>Número</strong><span class="text-danger"> *</span></label>
-                    <input type="text" name="number" id="number" value="{{ old('number') }}" onkeyup="maskNumber()"
+                    <input type="text" name="number" id="number" value="{{ old('number') ?? $data['Numero'] }}" onclick="maskNumber()" onkeyup="maskNumber()"
                         placeholder="ex: 23" class="form-control">
                 </div>
             </div>
             <div class="d-flex mt-3 justify-content-center">
                 <div class="form-group col-5">
                     <label><strong>Complemento</strong></label>
-                    <input type="text" name="complement" id="complement" value="{{ old('complement') }}"
+                    <input type="text" name="complement" id="complement" value="{{ old('complement') ?? $data['Complemento'] }}"
                         placeholder="ex: Casa 2" class="form-control">
                 </div>
 
                 <div class="form-group col-5 ms-5">
                     <label><strong>Fone</strong><span class="text-danger"> *</span></label>
-                    <input type="text" name="phone" id="phone" value="{{ old('phone') }}"
-                        onkeyup="maskphone()" placeholder="ex: (11) 99999-9999" class="form-control">
+                    <input type="text" name="phone" id="phone" value="{{ old('phone') ?? App\helpers\Utils::formatar('fone',$data['Fone'],strlen($data['Fone'])) }}"
+                        onkeyup="maskphone()" onclick="maskphone()" placeholder="ex: (11) 99999-9999" class="form-control">
                 </div>
 
 
@@ -124,12 +124,12 @@
             <div class="d-flex mt-3 justify-content-center">
                 <div class="form-group col-5 ">
                     <label><strong>Limite Crédito</strong><span class="text-danger"> *</span></label>
-                    <input type="text" name="limitCredit" value="{{ old('limitCredit') }}" onkeydown="maskCredit()"
+                    <input type="text" name="limitCredit" value="{{ old('limitCredit') ?? App\helpers\Utils::formatar('money',$data['LimiteCredito']) }}" onclick="maskCredit()" onkeydown="maskCredit()"
                         placeholder="ex: R$ 2.000,00" id="limitCredit" class="form-control">
                 </div>
                 <div class="form-group col-5 ms-5">
                     <label><strong>Validade</strong><span class="text-danger"> *</span></label>
-                    <input type="date" name="validate" value="{{ old('validate') }}" min="{{\Carbon\Carbon::now()->format('Y-m-d')}}" maxlength="8"
+                    <input type="date" name="validate" value="{{ old('validate') ?? $data['Validade'] }}" min="{{\Carbon\Carbon::now()->format('Y-m-d')}}" maxlength="8"
                          placeholder="ex: {{ \Carbon\Carbon::now()->format('d/m/Y') }}"
                         id="validate" class="form-control">
 
@@ -139,12 +139,22 @@
 
 
             <div class="d-flex justify-content-center mt-5 mb-3">
-                <a type="button" href="{{ route('client') }}" id="buttonSubmit" class="btn btn-dark">Cancelar</a>
-                <button type="submit" onclick="disbleButton()" class="btn btn-dark ms-3">Cadastrar</button>
+                <a type="button" href="{{ route('client') }}" class="btn btn-dark ">Cancelar</a>
+                <button type="submit" id="btnSubmit" class="btn btn-dark ms-3">Salvar</button>
             </div>
         </form>
     </div>
     <script>
+
+        let button = document.getElementById('btnSubmit');
+
+        button.addEventListener('click', ()=>{
+            button.classList.add('disabled');
+            setTimeout(() => {
+                button.classList.remove('disabled');
+            }, 2000);
+        });
+
 
         function maskDocument() {
 
@@ -239,9 +249,6 @@
                     }
                 })
             }
-        }
-        function disbleButton(){
-            document.getElementById('buttonSubmit').disabled = true;
         }
 
         function hideAlert() {
