@@ -5,6 +5,8 @@
 <p> 4-Execute o comando php artisan migrate</p>
 <p> 5-Execute o comando php artisan serve este comando irá te retornar uma uma url, então basta utiliza-la em seu navegador para visualizar a aplicação</p>
 
+</hr>
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
