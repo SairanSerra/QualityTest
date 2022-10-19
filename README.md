@@ -8,7 +8,7 @@ Teste para desenvolvedor FullStack!
 3) D.
 4) D.
 5) 9 dias.
-6) Para conseguir atravessar o rio e levar tudo, primeiramente ele levaria a galinha, retonava, pegava o saco de milho e levaria para o outro lado, pegaria a galinha, levaria de volta junto a raposa, levaria a raposa, depois, voltava buscar a galinha.
+6) Para conseguir atravessar o rio e levar tudo, primeiramente ele levaria a galinha, retornar, pegava o saco de milho e levaria para o outro lado, pegaria a galinha, levaria de volta junto a raposa, levaria a raposa, depois, voltava buscar a galinha.
 7) Falta responder </br>
 8)A </br>
 9A)C </br>
