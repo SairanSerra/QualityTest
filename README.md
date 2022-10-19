@@ -1,6 +1,3 @@
-# Empresa Quality
-Teste para desenvolvedor FullStack!
-
 # Respostas do teste
 
 1) B.
