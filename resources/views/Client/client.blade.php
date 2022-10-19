@@ -91,6 +91,9 @@
                 @endif
             </tbody>
         </table>
+    </div>
+
+        {{ $listClient->links('Client.paginate.defaultPaginate') }}
 
         <div class="modal fade" id="modalOptions" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
