@@ -1,7 +1,7 @@
 # Empresa Quality
 Teste para desenvolvedor FullStack!
 
-#Respostas do teste
+# Respostas do teste
 
 1) B.
 2) E.
@@ -20,7 +20,7 @@ Teste para desenvolvedor FullStack!
 10C)18 </br>
 10D)5 </br>
 
-#Parte II
+# Parte II
 
 A)SELECT TALH_CODIGO
     FROM TALHAO
