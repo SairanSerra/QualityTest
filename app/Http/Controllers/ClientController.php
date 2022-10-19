@@ -38,7 +38,7 @@ class ClientController extends Controller
                 $cep = Utils::retiraFormat('cep',$cep);
                 $query->where('CEP', 'LIKE', '%'.$cep.'%');
             }
-        })->orderByDesc('created_at')->paginate(1);
+        })->orderByDesc('created_at')->paginate(10);
 
         return view('Client.client',['listClient' => $client])->with($request->except('_token'));
 
