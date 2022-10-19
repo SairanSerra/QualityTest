@@ -1,5 +1,5 @@
 # Empresa Quality
-Teste para desenvolvedor FullStack para a empresa Quality
+Teste para desenvolvedor FullStack!
 
 #Respostas do teste
 
