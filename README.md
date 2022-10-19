@@ -10,15 +10,15 @@ Teste para desenvolvedor FullStack!
 5) 9 dias.
 6) Para conseguir atravessar o rio e levar tudo, primeiramente ele levaria a galinha, retonava, pegava o saco de milho e levaria para o outro lado, pegaria a galinha, levaria de volta junto a raposa, levaria a raposa, depois, voltava buscar a galinha.
 7)
-8)A
-9A) C
-9B)
-9C)O
-9D)
-10A)2
-10B)62
-10C)18
-10D)5
+8)A </br>
+9A)C </br>
+9B) </br>
+9C)O </br>
+9D) </br>
+10A)2 </br>
+10B)62 </br>
+10C)18 </br>
+10D)5 </br>
 
 #Parte II
 
