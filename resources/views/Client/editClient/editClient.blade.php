@@ -125,7 +125,7 @@
                 <div class="form-group col-5 ">
                     <label><strong>Limite Crédito</strong><span class="text-danger"> *</span></label>
                     <input type="text" name="limitCredit" value="{{ old('limitCredit') ?? App\helpers\Utils::formatar('money',$data['LimiteCredito']) }}" onclick="maskCredit()" onkeydown="maskCredit()"
-                        placeholder="ex: R$ 2.000,00" id="limitCredit" class="form-control">
+                        placeholder="ex: R$ 2.000,00" maxlength="13" id="limitCredit" class="form-control">
                 </div>
                 <div class="form-group col-5 ms-5">
                     <label><strong>Validade</strong><span class="text-danger"> *</span></label>
@@ -216,27 +216,40 @@
                     contentType: false,
                     cache: false,
                     success: (response) => {
+                        var distric = document.getElementById("distric");
+                        var city = document.getElementById("city");
+                        var street = document.getElementById("street");
+                        var state = document.getElementById("state");
+
                         document.getElementById("distric").readOnly = response.bairro != '' ? true : false;
                         document.getElementById("city").readOnly = response.localidade != '' ? true : false;
                         document.getElementById("street").readOnly = response.logradouro != '' ? true : false;
                         document.getElementById("state").readOnly = response.uf != '' ? true : false;
 
                         if (response.bairro != '') {
-                            let distric = document.getElementById("distric");
                             distric.value = response.bairro;
-
                         }
                         if (response.localidade != '') {
-                            let city = document.getElementById("city");
                             city.value = response.localidade;
                         }
-                        if (response.logradouro != '') {
-                            let street = document.getElementById("street");
+                        if (response.logradouro != '') {                            
                             street.value = response.logradouro;
                         }
-                        if (response.uf != '') {
-                            let state = document.getElementById("state");
+                        if (response.uf != '') {                            
                             state.value = response.uf;
+                        }
+
+                        if(response.erro){
+                            distric.value = '';
+                            city.value = '';
+                            street.value = '';
+                            state.value = '';
+                            Swal.fire({
+                            icon: 'error',
+                            title: 'CEP inválido',
+                            showConfirmButton: false,
+                            timer: 3500,
+                        })
                         }
                     },
                     error: (response) => {
