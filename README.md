@@ -49,6 +49,6 @@ D)SELECT COUNT(TALH_CODIGO) AS Quantidade_2021
   
 # Parte III
 
-Para visualizar o funcionamento da aplicação acesse: http://qualitytestoficial.herokuapp.com/client
+Para visualizar o funcionamento da aplicação acesse: http://qualitytestoficial.herokuapp.com/client </br>
 O código para validação se encontra na branch master
 
