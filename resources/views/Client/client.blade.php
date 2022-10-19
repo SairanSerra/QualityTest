@@ -47,7 +47,7 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col">Data Cadastro</th>
+                    <th scope="col">Data e Hora Cadastro</th>
                     <th scope="col">Código</th>
                     <th scope="col">Nome</th>
                     <th scope="col">Documento</th>
